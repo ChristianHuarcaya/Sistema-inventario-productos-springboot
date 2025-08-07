@@ -28,45 +28,11 @@ Este proyecto es una aplicación web desarrollada con Spring Boot, Thymeleaf, qu
 - PostgreSQL
 - Maven
 
-📂 Estructura del proyecto
-arduino
-Copiar
-Editar
-├── entidad/
-│   ├── Usuario.java
-│   ├── Rol.java
-│   ├── Producto.java
-│   └── ...
-├── controlador/
-│   ├── RegistroUsuarioControlador.java
-│   └── ...
-├── repositorio/
-│   └── UsuarioRepository.java
-├── servicio/
-│   ├── UsuarioServicio.java
-│   └── UsuarioServicioImpl.java
-├── config/
-│   └── SecurityConfiguration.java
-└── templates/
-    ├── login.html
-    ├── registro.html
-    └── usuarios.html
----
-
-## 🚀 Cómo ejecutar
-
-1. Clona el repositorio:
-
-```bash
-git clone git remote add origin https://github.com/ChristianHuarcaya/Sistema-inventario-productos-springboot.git
-
-
-## 👨‍💻 Autor
-
-**Cristian Huarcaya Pumahualcca**  
+```
+👨‍💻 Autor
+Cristian Huarcaya Pumahualcca  
 Desarrollador Backend en Java  
-[LinkedIn](https://www.linkedin.com/in/christian-huarcaya-pumahualcca) | [GitHub](https://github.com/ChristianHuarcaya)
-
+LinkedIn | GitHub
 
 
 
