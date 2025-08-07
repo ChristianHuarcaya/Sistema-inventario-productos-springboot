@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Usuarios</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body>
+
+	<!-- NAVBAR -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="btn btn-secondary" th:href="@{/}">← Volver al Inicio</a>
+	</nav>
+
+	<div class="container mt-5">
+		<h2 class="text-center mb-4">Listado de Usuarios</h2>
+
+		<!-- Botón para nuevo usuario -->
+		<div class="mb-3 text-right">
+			<a class="btn btn-primary" th:href="@{/usuarios/nuevo}">Agregar
+				Usuario</a>
+		</div>
+
+		
+ 

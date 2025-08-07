@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Productos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 4.0 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="btn btn-secondary" th:href="@{/}">← Volver al Inicio</a>
+  </nav>
+
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Listado de Productos</h2>
+
+    <!-- Botón para nuevo producto -->
+    <div class="mb-3 text-right">
+    
+      <a class="btn btn-primary" th:href="@{/productos/nuevo}">Agregar Producto</a>
+    </div>
+
+    <!-- Tabla de productos -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="producto : ${listaProductos}">
+            <td th:text="${producto.id}">1</td>
+            <td th:text="${producto.nombre}">Nombre</td>
+            <td th:text="${producto.precio}">0.00</td>
+            <td th:text="${producto.categoria != null ? producto.categoria.nombre : 'Sin categoría'}">Categoría</td>
+            <td>
+              <a th:href="@{/productos/editar/{id}(id=${producto.id})}" class="btn btn-sm btn-warning">Editar</a>
+              <a th:href="@{/productos/eliminar/{id}(id=${producto.id})}" class="btn btn-sm btn-danger"
+                 onclick="confirm('¿Estás seguro de eliminar este producto?')">Eliminar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

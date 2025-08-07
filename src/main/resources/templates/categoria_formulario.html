@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Formulario de Categoría</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap 4.0 -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body>
+
+	<!-- NAVBAR -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Inicio</a>
+	</nav>
+
+	<!-- FORMULARIO -->
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<h2 class="text-center mb-4">Nueva Categoría</h2>
+				<form th:action="@{/categorias/guardar}" th:object="${categoria}"
+					method="post">
+
+					<div class="form-group">
+						<label for="nombre">Nombre de la Categoría</label> <input
+							type="text" th:field="*{nombre}" id="nombre" class="form-control"
+							placeholder="Ej. Electrónica" required>
+					</div>
+
+					<!-- Botones -->
+					<div class="mt-4 d-flex justify-content-between">
+						<a th:href="@{/categorias}" class="btn btn-secondary">Cancelar</a>
+						<button type="submit" class="btn btn-success">Guardar</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

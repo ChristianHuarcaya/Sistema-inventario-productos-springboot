@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title
+	th:text="${producto.id} == null ? 'Nuevo Producto' : 'Editar Producto'"></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body>
+
+	<!-- NAVBAR -->
+	<nav class="navbar navbar-dark bg-dark mb-4">
+		<a class="btn btn-secondary" th:href="@{/productos}">← Volver a
+			Productos</a>
+	</nav>
+
+	<!-- FORMULARIO -->
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<h3 class="text-center mb-4"
+					th:text="${producto.id} == null ? 'Nuevo Producto' : 'Editar Producto'"></h3>
+
+				<form th:action="@{/productos/guardar}" th:object="${producto}"
+					method="post">
+					<!-- Campo oculto para ID -->
+					<input type="hidden" th:field="*{id}" />
+
+					<div class="form-group">
+						<label for="nombre">Nombre</label> <input type="text"
+							th:field="*{nombre}" class="form-control" required />
+					</div>
+
+					<div class="form-group">
+						<label for="precio">Precio</label> <input type="number"
+							th:field="*{precio}" step="0.01" class="form-control" required />
+					</div>
+
+					<div class="form-group">
+						<label for="categoria">Categoría</label> <select
+							th:field="*{categoria}" class="form-control" required>
+							<option value="" disabled selected>Selecciona una
+								categoría</option>
+							<option th:each="categoria : ${listaCategorias}"
+								th:value="${categoria.id}" th:text="${categoria.nombre}">
+							</option>
+						</select>
+					</div>
+
+					<!-- DETALLES DINÁMICOS -->
+					<h5 class="mt-4">Detalles del Producto</h5>
+					<div id="detalleContainer">
+						<div class="form-row mb-2" th:each="detalle, iStat : *{detalles}">
+							<input type="hidden" name="detallesIDs" th:value="${detalle.id}" />
+							<div class="col">
+								<input type="text" class="form-control" name="detallesNombres"
+									th:value="${detalle.nombre}" placeholder="Nombre" />
+							</div>
+							<div class="col">
+								<input type="text" class="form-control" name="detallesValores"
+									th:value="${detalle.valor}" placeholder="Valor" />
+							</div>
+						</div>
+					</div>
+
+					<button type="button" class="btn btn-outline-primary btn-sm mb-3"
+						onclick="agregarDetalle()">➕ Añadir Detalle</button>
+
+					<!-- BOTONES -->
+					<div class="d-flex justify-content-between mt-4">
+						<a th:href="@{/productos}" class="btn btn-secondary">Cancelar</a>
+						<button type="submit" class="btn btn-success">Guardar
+							Producto</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- JS para agregar dinámicamente campos de detalles -->
+	<script>
+    function agregarDetalle() {
+      const container = document.getElementById('detalleContainer');
+      const div = document.createElement('div');
+      div.className = 'form-row mb-2';
+      div.innerHTML = `
+        <input type="hidden" name="detallesIDs" value="" />
+        <div class="col">
+          <input type="text" name="detallesNombres" class="form-control" placeholder="Nombre" />
+        </div>
+        <div class="col">
+          <input type="text" name="detallesValores" class="form-control" placeholder="Valor" />
+        </div>
+      `;
+      container.appendChild(div);
+    }
+  </script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
